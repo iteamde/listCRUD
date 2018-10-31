@@ -1,20 +1,40 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<h1>Post test</h1>
+
+<div class="addPost" (click)="showAddPost=!showAddPost">
+  Click to add new post
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+
+<div  class="filter-by-user">
+  <span>Filter posts by user id (0 means all)</span>
+  <select [(ngModel)]="filterByUserId">
+    <option *ngFor="let c of usersIdArray" [ngValue]="c">{{c}}</option>
+  </select>
+</div>
+
+
+<div class="post-container">
+
+  <div class="add-new-post" *ngIf="showAddPost">
+    <div><span>Add new post</span>
+      <i class="fa fa-plus fa-2x" aria-hidden="true" (click)="addPost()"></i>
+    </div>
+    <input [(ngModel)]="newPost.title" placeholder="Title"/>
+    <textarea [(ngModel)]="newPost.body" class="post-edit"></textarea>
+  </div>
+
+  <ul #postContainer (scroll)="checkIfScrolledToBottom()" class="post-items" *ngIf="posts && posts.length">
+    <li class="post-item"
+        *ngFor="let post of posts | filter: filterByUserId | slice:0:limitPost; trackBy: trackByFn; let index = index;">
+      <div class="post-title">{{post.title | capitalize}}</div>
+      <div class="post-body">{{post.body | capitalize}}</div>
+      <textarea *ngIf="post.showEditField" [(ngModel)]="post.body" class="post-edit"></textarea>
+      <div class="post-action">
+        <span (click)="savePost(post)">Save</span>
+        <span (click)="post.showEditField=!post.showEditField">Edit</span>
+        <span (click)="deletePost(post.id)">Delete</span>
+      </div>
+    </li>
+  </ul>
+
+</div>
 

@@ -1,0 +1,116 @@
+
+
+h1 {
+  text-align: center;
+}
+
+.post-container {
+  max-width: 50vw;
+  margin: 0 auto;
+}
+
+.post-items {
+  list-style-type: none;
+  padding: 40px;
+  box-shadow: 1px 1px 70px rgba(0, 0, 0, 0.1);
+  max-height: 600px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.post-item {
+  padding: 20px;
+  margin-bottom: 40px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+.post-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.post-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.post-body {
+  padding: 20px 0;
+}
+
+.post-action {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.post-action span {
+  display: inline-block;
+  padding: 10px 20px;
+  color: grey;
+}
+
+.post-action span:hover{
+  color: #000;
+  cursor: pointer;
+}
+
+.post-edit {
+  box-sizing: border-box;
+  resize:vertical;
+  width: calc(100% - 8px);
+  height: 120px;
+  outline: none;
+  line-height: 1.5;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 10px 20px;
+}
+
+
+.filter-by-user {
+  text-align: center;
+}
+
+.filter-by-user select {
+  margin-left:20px;
+}
+
+.addPost {
+  text-align: center;
+  padding: 10px 20px;
+  color: #00b9ff;
+}
+
+
+.addPost:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.add-new-post {
+  box-shadow: 1px 1px 70px rgba(0, 0, 0, 0.1);
+  padding: 20px 40px;
+  margin: 20px 0;
+}
+
+.add-new-post input {
+  display: inline-block;
+  margin: 20px 0;
+  padding-left: 20px;
+  width: 70%;
+}
+
+.add-new-post > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fa-plus {
+  color: #00b9ff;
+}
+
+.fa-plus:hover {
+  cursor: pointer;
+}
